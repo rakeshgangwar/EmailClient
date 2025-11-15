@@ -5,15 +5,42 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Rakesh on 8/7/2016.
+ * MessageSummary - Data model representing a lightweight email summary for list view.
+ *
+ * This class is used to display email information in the main list (RecyclerView).
+ * It contains essential fields for list display without the full email body,
+ * making it more efficient for network transfer and memory usage.
+ *
+ * Note: Participants are represented as simple strings (e.g., email addresses)
+ * rather than Participant objects, which differs from CompleteMessage.
+ *
+ * JSON mapping: Fields are automatically mapped by Gson from the API response.
+ *
+ * @author Rakesh Gangwar
+ * @version 1.0
+ * @see CompleteMessage
  */
 public class MessageSummary {
+
+    /** The email subject line */
     private String subject;
+
+    /** List of participant identifiers (email addresses or names as strings) */
     private List<String> participants = new ArrayList<String>();
+
+    /** Preview text (usually the first line of the email body) */
     private String preview;
+
+    /** Flag indicating whether the email has been read */
     private Boolean isRead;
+
+    /** Flag indicating whether the email is starred/favorited */
     private Boolean isStarred;
+
+    /** Unix timestamp in milliseconds when the email was sent/received */
     private long ts;
+
+    /** Unique identifier for the email */
     private Integer id;
 
     public String getSubject() {
